@@ -2,3 +2,6 @@ logging:
   level: INFO
   loggers:
     org.example: DEBUG
+
+template : Hi this is ,%s
+defaultName : perfect!

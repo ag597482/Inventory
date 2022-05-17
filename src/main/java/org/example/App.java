@@ -3,6 +3,7 @@ package org.example;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.example.resources.InventoryResource;
 
 public class App extends Application<AppConfig> {
 
@@ -12,7 +13,7 @@ public class App extends Application<AppConfig> {
 
     @Override
     public String getName() {
-        return "true";
+        return "Inventory";
     }
 
     @Override
@@ -23,7 +24,11 @@ public class App extends Application<AppConfig> {
     @Override
     public void run(final AppConfig configuration,
                     final Environment environment) {
-        // TODO: implement application
+        final InventoryResource resource = new InventoryResource(
+                configuration.getTemplate(),
+                configuration.getDefaultName()
+        );
+        environment.jersey().register(resource);
     }
 
 }
